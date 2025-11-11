@@ -7,3 +7,7 @@ export const useAuthStore = create((set) => ({
         set({ accessToken, username }),
     clearAuth: () => set({ accessToken: null, username: null }),
 }));
+
+if (import.meta.env.DEV) {
+    window.authStore = useAuthStore;
+}

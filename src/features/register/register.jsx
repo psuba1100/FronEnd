@@ -31,10 +31,11 @@ export default function Register() {
         }
 
         try {
-            const registerResp = await fetch(`${API_URL}/u/users/`, {
+            const registerResp = await fetch(`${API_URL}/users/`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password }),
+                credentials: "include"
             });
 
             const registerData = await registerResp.json();
@@ -59,7 +60,7 @@ export default function Register() {
                     username
                 });
 
-                navigate("/dashboard");
+                navigate("/u");
             }
         } catch (err) {
             setError(err.message);
@@ -67,7 +68,7 @@ export default function Register() {
     };
 
     return (
-        <div>
+        <>
             <h2>Create an Account</h2>
             <form onSubmit={handleSubmit}>
                 <input
@@ -94,6 +95,6 @@ export default function Register() {
                 {error && <p style={{ color: "red" }}>{error}</p>}
                 <button type="submit">Register</button>
             </form>
-        </div>
+        </>
     );
 }

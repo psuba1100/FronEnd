@@ -30,14 +30,14 @@ export default function Login() {
                 username
             });
 
-            navigate("/dashboard");
+            navigate("/u");
         }
         catch (err) {
             setError(err.message)
         }
     }
     return (
-        <div>
+        <>
             <h2>Log in</h2>
             <form onSubmit={handleSubmit}>
                 <input
@@ -57,6 +57,6 @@ export default function Login() {
                 {error && <p style={{ color: "red" }}>{error}</p>}
                 <button type="submit">Log in</button>
             </form>
-        </div>
+        </>
     )
 }
